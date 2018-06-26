@@ -10,59 +10,35 @@
       const lotrCitiesArray = ["Mordor","Gondor","Rohan","Beleriand","Mirkwood","Dead Marshes","Rhun","Harad"];
       const bestThing = "The best thing about a boolean is even if you are wrong you are only off by a bit"
 
-      //One: Display an array from the cities in gotCitiesCSV
-      let one = document.createElement("p");
-      one.textContent = "One: " + JSON.stringify(gotCitiesCSV.split(","));
-      document.body.appendChild(one);
+      function text(title, text) {
+        let textElement = document.createElement("p");
+        textElement.innerHTML = '<strong>' + title + '</strong><br />' + text;
+        document.body.appendChild(textElement);
+      }
 
-      let two = document.createElement("p");
-      two.textContent = "Two: " + JSON.stringify(bestThing.split(" "));
-      document.body.appendChild(two);
-
-      let three = document.createElement("p");
-      three.textContent = "Three: " + (gotCitiesCSV.replace(/,/g, ";"));
-      document.body.appendChild(three);
-
-      let four = document.createElement("p");
-      four.textContent = "Four: " + JSON.stringify(lotrCitiesArray.join(","));
-      document.body.appendChild(four);
-
-      let five = document.createElement("p");
+      text("One ", JSON.stringify(gotCitiesCSV.split(",")));
+      text("Two ", JSON.stringify(bestThing.split(" ")));
+      text("Three ", (gotCitiesCSV.replace(/,/g, ";")));
+      text("Four ", JSON.stringify(lotrCitiesArray.join(",")));
       var newArray = [];
       for (i in lotrCitiesArray){
         if(i >= 4) {
           newArray.push(lotrCitiesArray[i]);
         }
       }
-      five.textContent = "Five: " + JSON.stringify(newArray.join(", "));
-      document.body.appendChild(five);
-
-      let six = document.createElement("p");
-      six.textContent = "Six: " + JSON.stringify(lotrCitiesArray.splice(2,1));
-      document.body.appendChild(six);
-
-      let seven = document.createElement("p");
-      seven.textContent = "Seven: " + (bestThing.slice(23,38));
-      document.body.appendChild(seven);
-
-      let eight = document.createElement("p");
-      eight.textContent = "Eight: " + (bestThing.indexOf("only"));
-      document.body.appendChild(eight);
-
-      let nine = document.createElement("p");
+      text("Five ", JSON.stringify(newArray.join(", ")));
+      text("Six ", JSON.stringify(lotrCitiesArray.splice(2,1)));
+      text("Seven ", (bestThing.slice(23,38)));
+      text("Eight ", (bestThing.indexOf("only")));
       function filter(item){
         if(item.includes("aa") || item.includes("ee") || item.includes("ii") || item.includes("oo") || item.includes("uu")){
           return item;
         }
       }
-      nine.textContent = "Nine: " + ((gotCitiesCSV.split(",").filter(filter)).join(", "));
-      document.body.appendChild(nine);
-
-      let ten = document.createElement("p");
-      ten.textContent = "Ten: " + lotrCitiesArray.sort(function(a, b) {
-                          return a.length - b.length
-                        }).join(", ");
-      document.body.appendChild(ten);
+      text("Nine ", ((gotCitiesCSV.split(",").filter(filter)).join(", ")));
+      text("Ten ", lotrCitiesArray.sort(function(a, b) {
+                     return a.length - b.length
+                   }).join(", "));
     </script>
   </body>
 </html>
